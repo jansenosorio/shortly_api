@@ -6,6 +6,6 @@ const signUpRouters = Router()
 
 //Routes Here
 
-signUpRouters.post("/signup", validateSignUpSchema, signup)
+signUpRouters.post('/signup', validateSignUpSchema, signup)
 
 export default signUpRouters

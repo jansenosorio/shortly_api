@@ -13,22 +13,26 @@ export async function validateSignUpSchema(req, res, next) {
     }
 
     try {
+
         const { rowCount } = await db.query(`
         SELECT *
         FROM users
         WHERE email = $1
         `, [users.email])
 
-        if (rowCount > 0) return res.status(409)
+
+        if (rowCount > 0) return res.sendStatus(409)
 
     } catch (error) {
-        res.status(500).send(error)
+        console.log("3")
+        console.log(error)
+        return res.status(500).send(error)
     }
-
-
 
     res.locals.users = users
 
+
     next()
+
 
 }

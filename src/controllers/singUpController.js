@@ -7,9 +7,13 @@ export async function signup(req, res) {
     const hashedPassword = bcrypt.hashSync(password, 10)
 
     try {
-        await db.query(`INSERT INTO users (name, email, password) VALUES ($1, $2, $3, $4);`, [name, email, hashedPassword])
+
+        await db.query(`INSERT INTO users (name, email, password) VALUES ($1, $2, $3);`, [name, email, hashedPassword])
+
         res.sendStatus(201)
+
     } catch (error) {
+        console.log(error)
         res.status(500).send("Internal Error")
     }
 }

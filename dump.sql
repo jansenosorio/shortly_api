@@ -97,7 +97,6 @@ CREATE TABLE public.users (
     name character varying(140) NOT NULL,
     email character varying(140) NOT NULL,
     password text NOT NULL,
-    "confirmPassword" text NOT NULL,
     "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 

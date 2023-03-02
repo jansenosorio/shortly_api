@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import signUpRouters from './routes/signUpRoutes.js'
+import authRouters from './routes/authRoutes.js'
 dotenv.config()
 
 // Initializing server with Express
@@ -10,7 +10,7 @@ server.use(express.json())
 server.use(cors())
 
 //Routes
-server.use([signUpRouters])
+server.use([authRouters])
 
 //Opening port to express
 

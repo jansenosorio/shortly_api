@@ -64,7 +64,7 @@ CREATE TABLE public."userToken" (
     id integer NOT NULL,
     "userId" integer NOT NULL,
     "tokenId" text NOT NULL,
-    "createdAt" timestamp without time zone NOT NULL
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -158,6 +158,8 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.users VALUES (1, 'João', 'joao@driven.com.br', '$2b$10$susuvJx0p2Dxh6veOR/Zuual7zO8WeWUmGQHLJVqqOJSfo1QHbpsu', '2023-03-01 14:25:44.021619');
+INSERT INTO public.users VALUES (2, 'João', 'jansen@driven.com.br', '$2b$10$Mji8LOIWTOPfUZjuYksV5ePhEAANv.71o.jq9g5x90QAWCo6dE4C6', '2023-03-01 15:26:39.841163');
 
 
 --
@@ -171,14 +173,14 @@ SELECT pg_catalog.setval('public.url_id_seq', 1, false);
 -- Name: userToken_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."userToken_id_seq"', 1, false);
+SELECT pg_catalog.setval('public."userToken_id_seq"', 4, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_id_seq', 2, true);
 
 
 --

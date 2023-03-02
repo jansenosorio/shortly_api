@@ -33,3 +33,30 @@ export async function registerShortUrl(req, res) {
         res.status(500).send(error)
     }
 }
+
+export async function getUrlById(req, res) {
+    const { id } = req.params
+
+    try {
+        const { rows, rowCount } = await db.query(`
+            SELECT *
+            FROM url
+            WHERE id = $1
+        `, [id])
+
+        const isValidId = rowCount > 0
+
+        if (!isValidId) return res.sendStatus(404)
+
+        const body = {
+            id: rows[0].id,
+            shortUrl: rows[0].shortUrl,
+            url: rows[0].url
+        }
+
+        res.status(200).send(body)
+
+    } catch (error) {
+        res.status(500).send(error)
+    }
+}

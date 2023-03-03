@@ -55,6 +55,8 @@ export async function deleteUrlValidate(req, res, next) {
         ON url."tokenId" = "userToken".id
     `)
 
+        console.log(rows)
+
         //verify if id exists
         const isValidId = rows.filter(elm => elm.id === Number(id))
         if (!isValidId.length > 0) return res.sendStatus(404)

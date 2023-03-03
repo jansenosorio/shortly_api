@@ -1,5 +1,5 @@
 import db from "../database/database_connection.js"
-import { urlsShortenValidate } from "../middlewares/validateUrlsSchema.js"
+
 
 export async function getUserInformation(req, res) {
     const token = res.locals.usersInfomations
@@ -45,6 +45,27 @@ export async function getUserInformation(req, res) {
 
     } catch (error) {
         console.log(error)
+        res.status(500).send(error)
+    }
+}
+
+export async function getUserRanking(req, res) {
+
+    try {
+        const { rows } = await db.query(`
+        SELECT users.id, users.name, 
+        COUNT(url.id) AS "linksCount", 
+        SUM(url."visitCount") AS "visitCount"
+        FROM users
+        JOIN url ON users.id = url."userId"
+        GROUP BY users.id, users.name
+        ORDER BY "visitCount" DESC
+        LIMIT 10;
+    `)
+
+        res.status(200).send(rows)
+
+    } catch (error) {
         res.status(500).send(error)
     }
 }

@@ -12,4 +12,5 @@ urlRouters.get('/urls/:id', getUrlById)
 urlRouters.get('/urls/open/:shortUrl', redirectByShortUrl)
 urlRouters.delete('/url/:id', deleteUrlValidate, deleteUrlById)
 
+
 export default urlRouters

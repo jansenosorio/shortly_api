@@ -47,7 +47,7 @@ export async function deleteUrlValidate(req, res, next) {
 
     try {
 
-        // get informations from database, where token is stored
+        // get informations from database, where token and id its stored
         const { rows } = await db.query(`
         SELECT url.*, "userToken"."tokenId" as token, "userToken"."userId" as "userTokenId"
         FROM url
@@ -73,3 +73,4 @@ export async function deleteUrlValidate(req, res, next) {
 
     next()
 }
+

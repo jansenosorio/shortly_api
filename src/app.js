@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import authRouters from './routes/authRoutes.js'
 import urlRouters from './routes/urlsRoutes.js'
+import usersRoutes from './routes/usersRoutes.js'
 dotenv.config()
 
 // Initializing server with Express
@@ -11,7 +12,7 @@ server.use(express.json())
 server.use(cors())
 
 //Routes
-server.use([authRouters, urlRouters])
+server.use([authRouters, urlRouters, usersRoutes])
 
 //Opening port to express
 

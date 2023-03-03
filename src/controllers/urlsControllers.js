@@ -1,7 +1,7 @@
 
 import db from "../database/database_connection.js";
 import { nanoid } from "nanoid";
-import { query } from "express";
+
 
 export async function registerShortUrl(req, res) {
 
@@ -91,4 +91,22 @@ export async function redirectByShortUrl(req, res) {
     } catch (error) {
         res.status(500).send(error)
     }
+}
+
+export async function deleteUrlById(req, res) {
+    const id = res.locals.urlId
+
+    try {
+
+        await db.query(`
+        DELETE FROM url
+        WHERE id = $1
+        `, [id])
+
+        res.sendStatus(204)
+
+    } catch (error) {
+        res.status(500).send(error)
+    }
+
 }

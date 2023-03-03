@@ -10,7 +10,7 @@ const urlRouters = Router()
 urlRouters.post('/urls/shorten', urlsShortenValidate, registerShortUrl)
 urlRouters.get('/urls/:id', getUrlById)
 urlRouters.get('/urls/open/:shortUrl', redirectByShortUrl)
-urlRouters.delete('/url/:id', deleteUrlValidate, deleteUrlById)
+urlRouters.delete('/urls/:id', deleteUrlValidate, deleteUrlById)
 
 
 export default urlRouters
